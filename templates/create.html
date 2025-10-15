@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Nuevo Registro</h2>
+<form action="/save" method="post">
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Nombre</label>
+  <input type="text" class="form-control" name="nombre" placeholder="Nombre de la persona" required>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Telefono</label>
+  <input type="text" class="form-control" name="telefono" placeholder="Telefono de la persona de la persona" required>
+</div>
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Fecha Nac</label>
+  <input type="date" class="form-control" name="fecha_nac" placeholder="Fecha de nacimiento" required>
+</div>
+<button type="submit" class="btn btn-primary" >Grabar</button>
+
+</form>
+{% endblock %}

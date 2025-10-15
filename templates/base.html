@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kardex - CRUD</title>
+    <!-- Bootstrap 5 CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      :root {
+        --primary-red: #E60026;
+        --primary-black: #1C1C1C;
+        --accent-pink: #FF7EB9;
+      }
+
+      /* Imagen de fondo */
+      body {
+        background-image: url('https://wallpapers.com/images/hd/darling-in-the-franxx-double-x-h4wfhn8qafxalu4t.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        color: #fff;
+      }
+
+      /* Navbar con transparencia ligera */
+      .navbar {
+        background-color: rgba(230, 0, 38, 0.9);
+      }
+
+      /* Contenedor con fondo semitransparente */
+      .container {
+        background-color: rgba(28, 28, 28, 0.85);
+        padding: 20px;
+        border-radius: 10px;
+      }
+
+      /* Botones primarios */
+      .btn-primary {
+        background-color: var(--primary-red);
+        border-color: var(--primary-red);
+      }
+
+      .btn-primary:hover {
+        background-color: var(--accent-pink);
+        border-color: var(--accent-pink);
+      }
+
+      /* Alertas */
+      .alert-primary {
+        background-color: var(--primary-red);
+        border-color: var(--primary-black);
+        color: #fff;
+      }
+
+      .alert-dismissible .btn-close {
+        filter: invert(1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">Kardex</a>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
